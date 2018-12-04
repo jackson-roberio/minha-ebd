@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ATrimestre extends AppCompatActivity {
 
@@ -18,7 +23,13 @@ public class ATrimestre extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar) ;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        String[] trimestres = {"2ª Trimestre - 2018", "3ª Trimestre - 2018", "1ª Trimestre - 2018"};
+        ListView lista = (ListView) findViewById((R.id.trimestreLista));
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trimestres);
+        lista.setAdapter(adapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trimestreInserir);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +37,9 @@ public class ATrimestre extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+
     }
 
     @Override
