@@ -21,7 +21,7 @@ public class ATrimestre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_trimestre);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar) ;
+        setSupportActionBar(toolbar);
 
         String[] trimestres = {"2ª Trimestre - 2018", "3ª Trimestre - 2018", "1ª Trimestre - 2018"};
         ListView lista = (ListView) findViewById((R.id.trimestreLista));
