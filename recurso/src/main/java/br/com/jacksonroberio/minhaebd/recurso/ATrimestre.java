@@ -1,5 +1,7 @@
 package br.com.jacksonroberio.minhaebd.recurso;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,19 +26,20 @@ public class ATrimestre extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         String[] trimestres = {"2ª Trimestre - 2018", "3ª Trimestre - 2018", "1ª Trimestre - 2018"};
-        ListView lista = (ListView) findViewById((R.id.trimestreLista));
+        ListView lista = (ListView) findViewById((R.id.trimestre_lista));
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trimestres);
         lista.setAdapter(adapter);
+//        lista.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                Intent mudarPagina = new Intent(ATrimestre.this, ALicao.class);
+//                startActivity(mudarPagina);
+//            }
+//        });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trimestreInserir);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trimestre_inserir);
+        fab.setOnClickListener(eSalvarTrimetre());
 
 
 
@@ -58,9 +61,31 @@ public class ATrimestre extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            MenuItem a = (MenuItem) findViewById(R.id.action_settings);
+            a.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent mudarPagina = new Intent(ATrimestre.this, ALicao.class);
+                    startActivity(mudarPagina);
+                    return false;
+                }
+            });
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    /*EVENTOS*/
+    private View.OnClickListener eSalvarTrimetre(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        };
+    }
+
 }
